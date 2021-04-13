@@ -18,6 +18,7 @@ for (let i = 0, j = 0; i < precios.length, j < nombres.length; i++, j++) {
     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
     </div>
     <div class="card-footer">
+    <button>Agregar al carrito</button>
     <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
     </div>
     </div>
@@ -27,5 +28,10 @@ for (let i = 0, j = 0; i < precios.length, j < nombres.length; i++, j++) {
 // console.log(`${acumulador}`);
 
 document.getElementById("productos").innerHTML = acumulador;
+
+function agregarAlCarrito() {
+  alert("Se agrego un nuevo producto al carrito");
+}
+
 
 
