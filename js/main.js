@@ -1,6 +1,8 @@
 let acumulador = ``;
-let precios = [3000, 4500, 1799, 10, 500, 1000];
-let nombres = ['chanclas', 'zapas', 'algo', 'remeras', 'buzos', 'sillas'];
+let precios = [800, 800, 900, 500, 1500, 1000];
+let nombres = ['Pain & Pride', 'Believe', 'SuperHeroes', 'Believe Fitness', 'Remera', 'Modelo Negro'];
+let totalCarrito = 0;
+let stock = 20;
 
 for (let i = 0, j = 0; i < precios.length, j < nombres.length; i++, j++) {
   console.log(precios[i]);
@@ -18,19 +20,32 @@ for (let i = 0, j = 0; i < precios.length, j < nombres.length; i++, j++) {
     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
     </div>
     <div class="card-footer">
-    <button>Agregar al carrito</button>
+    <button onclick="agregarAlCarrito(${precios[i]})">Agregar al carrito</button>
     <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
     </div>
     </div>
-    </div>`;
+    </div>`
 }
 
 // console.log(`${acumulador}`);
 
 document.getElementById("productos").innerHTML = acumulador;
 
-function agregarAlCarrito() {
-  alert("Se agrego un nuevo producto al carrito");
+
+
+function agregarAlCarrito(precio) {
+  if(verificarStock(stock)){
+    totalCarrito = totalCarrito + precio;
+    console.log(totalCarrito);
+  }
+  else{
+    alert("No tenemos stock.");
+  }
+  
+}
+
+function verificarStock(stock){
+  return stock > 0 
 }
 
 
