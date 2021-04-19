@@ -1,26 +1,54 @@
 let acumulador = ``;
-let precios = [800, 800, 900, 500, 1500, 1000];
-let nombres = ['Pain & Pride', 'Believe', 'SuperHeroes', 'Believe Fitness', 'Remera', 'Modelo Negro'];
 let totalCarrito = 0;
-let stock = 20;
 
-for (let i = 0, j = 0; i < precios.length, j < nombres.length; i++, j++) {
-  console.log(precios[i]);
-  console.log(nombres[j]);
+class producto{
+    constructor(nombre, precio, imagen, stock) {
+      this.nombre = nombre;
+      this.precio = precio;
+      this.imagen = imagen;
+      this.stock = stock;
+    }   
+    
+    restarStock(cantidad){
+      this.stock -= cantidad;
+    }
+    agregarAlCarrito(){
+      if(this.stock > 0){
+        totalCarrito = totalCarrito + this.precio;
+        this.restarStock(1);
+        console.log(`El total de tu carrito es de: $${totalCarrito}`);
+      }
+      else{
+        alert("No tenemos stock.");
+      }
+    }
+}
+
+const producto1 = new producto("Pain & Pride", 800, "/imagenes/REMERA3.jpg", 20);
+const producto2 = new producto("Believe", 800, "/imagenes/remera1.jpg", 10);
+const producto3 = new producto("SuperHeroes", 900, "/imagenes/remera4.jpg", 15);
+const producto4 = new producto("BelieveFitness", 1200, "/imagenes/remera2.jpg", 2);
+const producto5 = new producto("BasicaNegra", 650, "/imagenes/remera5.jpg", 5);
+
+let productos = [producto1, producto2, producto3, producto4, producto5];
+
+for (let i = 0; i < productos.length; i++) {
+
 
 
   acumulador += `<div class="col-lg-4 col-md-6 mb-4">
     <div class="card h-100">
-    <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+    <a href="#"><img class="card-img-top" src="${productos[i].imagen}" alt=""></a>
     <div class="card-body">
     <h4 class="card-title">
-    <a href="#">${nombres[j]}</a>
+    <a href="#">${productos[i].nombre}</a>
     </h4>
-    <h5> $${precios[i]}</h5>
+    <h5> $${productos[i].precio}</h5>
     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
     </div>
     <div class="card-footer">
-    <button onclick="agregarAlCarrito(${precios[i]})">Agregar al carrito</button>
+    <button onclick="productos[${i}].agregarAlCarrito()">Agregar al carrito</button>
+    <p>Stock disponible ${productos[i].stock}</p>
     <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
     </div>
     </div>
@@ -30,23 +58,4 @@ for (let i = 0, j = 0; i < precios.length, j < nombres.length; i++, j++) {
 // console.log(`${acumulador}`);
 
 document.getElementById("productos").innerHTML = acumulador;
-
-
-
-function agregarAlCarrito(precio) {
-  if(verificarStock(stock)){
-    totalCarrito = totalCarrito + precio;
-    console.log(totalCarrito);
-  }
-  else{
-    alert("No tenemos stock.");
-  }
-  
-}
-
-function verificarStock(stock){
-  return stock > 0 
-}
-
-
 
