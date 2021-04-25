@@ -7,3 +7,7 @@ body {
   padding-top: 56px;
   background-color: whitesmoke;
 }
+
+.mt-4, .my-4 {
+    margin-top: 3rem!important;
+}

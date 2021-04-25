@@ -37,49 +37,49 @@ productos.push(producto3);
 productos.push(producto4);
 productos.push(producto5);
 
-//  for (let i = 0; i < productos.length; i++) {
+ for (let i = 0; i < productos.length; i++) {
 
 
 
-//   acumulador += `<div class="col-lg-4 col-md-6 mb-4">
-//     <div class="card h-100">
-//     <a href="#"><img class="card-img-top" src="${productos[i].imagen}" alt=""></a>
-//     <div class="card-body">
-//     <h4 class="card-title">
-//     <a href="#">${productos[i].nombre}</a>
-//     </h4>
-//     <h5> $${productos[i].precio}</h5>
-//     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-//     </div>
-//     <div class="card-footer">
-//     <button onclick="productos[${i}].agregarAlCarrito()">Agregar al carrito</button>
-//     <p>Stock disponible ${productos[i].stock}</p>
-//     <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-//     </div>
-//     </div>
-//     </div>`
-// }
-
-productos.forEach(function (product){
-  console.log(product);
   acumulador += `<div class="col-lg-4 col-md-6 mb-4">
-  <div class="card h-100">
-  <a href="#"><img class="card-img-top" src="${product.imagen}" alt=""></a>
-  <div class="card-body">
-  <h4 class="card-title">
-  <a href="#">${product.nombre}</a>
-  </h4>
-  <h5> $${product.precio}</h5>
-  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-  </div>
-  <div class="card-footer">
-  <button onclick='${product}.agregarAlCarrito()'>Agregar al carrito</button>
-  <p>Stock disponible ${product.stock}</p>
-  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-  </div>
-  </div>
-  </div>`
-});
+    <div class="card h-100">
+    <a href="#"><img class="card-img-top" src="${productos[i].imagen}" alt=""></a>
+    <div class="card-body">
+    <h4 class="card-title">
+    <a href="#">${productos[i].nombre}</a>
+    </h4>
+    <h5> $${productos[i].precio}</h5>
+    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
+    </div>
+    <div class="card-footer">
+    <button class="btn btn-primary" onclick="productos[${i}].agregarAlCarrito()">Agregar al carrito</button>
+    <p>Stock disponible ${productos[i].stock}</p>
+    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+    </div>
+    </div>
+    </div>`
+}
+
+// productos.forEach(function (product){
+//   console.log(product);
+//   acumulador += `<div class="col-lg-4 col-md-6 mb-4">
+//   <div class="card h-100">
+//   <a href="#"><img class="card-img-top" src="${product.imagen}" alt=""></a>
+//   <div class="card-body">
+//   <h4 class="card-title">
+//   <a href="#">${product.nombre}</a>
+//   </h4>
+//   <h5> $${product.precio}</h5>
+//   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
+//   </div>
+//   <div class="card-footer">
+//   <button onclick='${product}.agregarAlCarrito()'>Agregar al carrito</button>
+//   <p>Stock disponible ${product.stock}</p>
+//   <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+//   </div>
+//   </div>
+//   </div>`
+// });
 
 
 
@@ -87,3 +87,34 @@ productos.forEach(function (product){
 
 document.getElementById("productos").innerHTML = acumulador;
 
+
+
+
+
+
+
+// /** Guardamos los datos del storage */
+// let ValorDelCarritoEnElStorage = localStorage.carrito; // null
+// let carrito = []; // []
+// /** Preguntamos si hay datos del carrito en el storage */
+// if(ValorDelCarritoEnElStorage == null){ //
+//   carrito = []; // Si no hay, lo dejamos vacio // Entra aca porque es null
+// }else{
+//   console.log(ValorDelCarritoEnElStorage)
+//   console.log(JSON.parse(ValorDelCarritoEnElStorage))
+//   carrito = JSON.parse(ValorDelCarritoEnElStorage); // Si hay, lo llenamos con los datos que hay
+// }
+// let productoEnTipoJson = {id: 10, nombre:'Zapas Niky', precio:9000};
+// agregarAlCarrito(productoEnTipoJson); 
+// function agregarAlCarrito(producto){
+//   // Zapas niky
+//   carrito.push(producto); // carrito = [{id: 10, nombre:'Zapas Niky', precio:9000}]
+//   localStorage.carrito = JSON.stringify(carrito); // Array de carrito
+//   // localStorage.validacionCarrito = 'until=10/10/2222'; // Array de carrito
+// }
+//   // Mostrar las cards de los productos en la pantalla principal ;)
+//   // Mostrar el total de lo agregado al carrito :(
+//   // Mostrar los productos agregados al carrito :(
+//   // El boton de agregar al carrito en la card del producto :/
+//   // Borrar producto del carrito
+//   // Pagar con mercadopago o paypal
