@@ -3,7 +3,10 @@
  * Copyright 2013-2020 Start Bootstrap
  * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-shop-homepage/blob/master/LICENSE)
  */
-body {
+
+/* Categorias y body  */
+
+ body {
   padding-top: 56px;
   background-color: whitesmoke;
 }
@@ -11,3 +14,32 @@ body {
 .mt-4, .my-4 {
     margin-top: 3rem!important;
 }
+
+.categorias{
+  font-family: 'News Cycle', sans-serif;
+  font-weight: bold;
+  color: black;
+}
+
+a.list-group-item.categorias{
+  background-color: #007bff;
+  text-decoration: none;
+}
+
+a.list-group-item.categorias:hover{
+  background-color: lightblue;
+}
+
+h1.my-4{
+  font-family: 'News Cycle', sans-serif;
+  font-weight: bold;
+}
+
+/* -------------------------------------------------------------- */
+
+/* Contacto */
+
+div.formulario{
+  margin-top: 3rem;
+}
+

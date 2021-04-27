@@ -1,6 +1,18 @@
 let acumulador = ``;
 let totalCarrito = 0;
+let carrito=[];
 
+const usuarioEnLocal = localStorage.usuario;
+if(usuarioEnLocal == null){
+  const usuario = prompt("Ingrese su nombre:");
+  localStorage.usuario = usuario;
+  alert(`Bienvenido ${usuario}`);
+}else{
+  alert(`Bienvenido ${usuarioEnLocal}`);
+}
+
+
+// Pertenece a productos //
 class producto{
     constructor(nombre, precio, imagen, stock) {
       this.nombre = nombre;
@@ -37,6 +49,7 @@ productos.push(producto3);
 productos.push(producto4);
 productos.push(producto5);
 
+
  for (let i = 0; i < productos.length; i++) {
 
 
@@ -60,61 +73,79 @@ productos.push(producto5);
     </div>`
 }
 
-// productos.forEach(function (product){
-//   console.log(product);
-//   acumulador += `<div class="col-lg-4 col-md-6 mb-4">
-//   <div class="card h-100">
-//   <a href="#"><img class="card-img-top" src="${product.imagen}" alt=""></a>
-//   <div class="card-body">
-//   <h4 class="card-title">
-//   <a href="#">${product.nombre}</a>
-//   </h4>
-//   <h5> $${product.precio}</h5>
-//   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-//   </div>
-//   <div class="card-footer">
-//   <button onclick='${product}.agregarAlCarrito()'>Agregar al carrito</button>
-//   <p>Stock disponible ${product.stock}</p>
-//   <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-//   </div>
-//   </div>
-//   </div>`
-// });
-
-
-
-// console.log(`${acumulador}`);
-
+if(document.getElementById("productos")){
 document.getElementById("productos").innerHTML = acumulador;
+}
 
 
 
+// Pertenece a Rutinas // 
+
+class rutinas{
+  constructor(nombre, precio, imagen){
+      this.nombre = nombre;
+      this.precio = precio;
+      this.imagen = imagen;
+  }
+
+  agregarAlCarrito(){
+        totalCarrito = totalCarrito + this.precio;
+        console.log(`El total de tu carrito es de: $${totalCarrito}`);
+  }
+}
+
+const rutina1 = new rutinas("Full Body", 1500, "/imagenes/img.jpg");
+const rutina2 = new rutinas("Cardio", 1000, "/imagenes/img.jpg");
+const rutina3 = new rutinas("Espalda y pecho", 1500, "/imagenes/img.jpg");
+const rutina4 = new rutinas("Piernas", 1500, "/imagenes/img.jpg");
+
+let arrayRutina = [];
+arrayRutina.push(rutina1);
+arrayRutina.push(rutina2);
+arrayRutina.push(rutina3);
+arrayRutina.push(rutina4);
+
+let acumuladorRutina = ``;
+
+for(let j = 0; j < arrayRutina.length; j++) {
+
+acumuladorRutina+= `<div class="col-lg-3 col-md-6 mb-4">
+<div class="card h-100">
+<img class="card-img-top" src="http://placehold.it/500x325" alt="">
+<div class="card-body">
+<h4 class="card-title">${arrayRutina[j].nombre}</h4>
+<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+<h5> $${arrayRutina[j].precio}</h5>
+</div>
+<div class="card-footer">
+<button class="btn btn-primary" onclick="arrayRutina[${j}].agregarAlCarrito()">Agregar al carrito</button>
+</div>
+</div>
+</div>`
+
+}
+
+if(document.getElementById("rutinas")){
+  document.getElementById("rutinas").innerHTML = acumuladorRutina;
+}
 
 
 
+// let carritoStorage = localStorage.carrito
+// let carrito = [];
 
-// /** Guardamos los datos del storage */
-// let ValorDelCarritoEnElStorage = localStorage.carrito; // null
-// let carrito = []; // []
-// /** Preguntamos si hay datos del carrito en el storage */
-// if(ValorDelCarritoEnElStorage == null){ //
-//   carrito = []; // Si no hay, lo dejamos vacio // Entra aca porque es null
+// if(carritoStorage == null){
+//   carrito = [];
 // }else{
-//   console.log(ValorDelCarritoEnElStorage)
-//   console.log(JSON.parse(ValorDelCarritoEnElStorage))
-//   carrito = JSON.parse(ValorDelCarritoEnElStorage); // Si hay, lo llenamos con los datos que hay
+//   console.log(carritoStorage)
+//   console.log(JSON.parse(carritoStorage))
+//   carrito = JSON.parse(carritoStorage)
 // }
-// let productoEnTipoJson = {id: 10, nombre:'Zapas Niky', precio:9000};
+
+// let productoEnTipoJson = [productos];
 // agregarAlCarrito(productoEnTipoJson); 
 // function agregarAlCarrito(producto){
-//   // Zapas niky
-//   carrito.push(producto); // carrito = [{id: 10, nombre:'Zapas Niky', precio:9000}]
+//   carrito.push(producto); 
 //   localStorage.carrito = JSON.stringify(carrito); // Array de carrito
-//   // localStorage.validacionCarrito = 'until=10/10/2222'; // Array de carrito
+//   localStorage.validacionCarrito = 'until=10/10/2222'; // Array de carrito
 // }
-//   // Mostrar las cards de los productos en la pantalla principal ;)
-//   // Mostrar el total de lo agregado al carrito :(
-//   // Mostrar los productos agregados al carrito :(
-//   // El boton de agregar al carrito en la card del producto :/
-//   // Borrar producto del carrito
-//   // Pagar con mercadopago o paypal
