@@ -12,6 +12,8 @@ if(usuarioEnLocal == null){
 }
 
 
+
+
 // Pertenece a productos //
 class producto{
     constructor(nombre, precio, imagen, stock) {
@@ -37,9 +39,9 @@ class producto{
 }
 
 const producto1 = new producto("Pain & Pride", 800, "/imagenes/REMERA3.jpg", 20);
-const producto2 = new producto("Believe", 800, "/imagenes/remera1.jpg", 10);
+const producto2 = new producto("BelieveFitness", 1200, "/imagenes/remera2.jpg", 2);
 const producto3 = new producto("SuperHeroes", 900, "/imagenes/remera4.jpg", 15);
-const producto4 = new producto("BelieveFitness", 1200, "/imagenes/remera2.jpg", 2);
+const producto4 = new producto("Believe", 800, "/imagenes/remera1.jpg", 10);
 const producto5 = new producto("BasicaNegra", 650, "/imagenes/remera5.jpg", 5);
 
 let productos = [];
@@ -118,7 +120,7 @@ acumuladorRutina+= `<div class="col-lg-3 col-md-6 mb-4">
 <h5> $${arrayRutina[j].precio}</h5>
 </div>
 <div class="card-footer">
-<button class="btn btn-primary" onclick="arrayRutina[${j}].agregarAlCarrito()">Agregar al carrito</button>
+<button class="btn btn-primary" onclick="arrayRutina[${j}].agregarAlCarrito()">Comprar</button>
 </div>
 </div>
 </div>`

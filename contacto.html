@@ -50,17 +50,14 @@
     </div>
 
     <div class="formulario container">    
-        <div class="input-group mb-3 w-25">
-            <input id="usuario" type="text" class="form-control" placeholder="Nombre" aria-label="Name" aria-describedby="basic-addon1">
-        </div>
-        
-        <div class="input-group d-print-block mb-3 w-25">
-            <input id="contraseña" type="text" class="form-control" placeholder="Apellido" aria-label="Lastname" aria-describedby="basic-addon2">
-        </div>
-        
-        <div class="input-group d-print-block mb-3 w-25">
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
-        </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Ingrese su email</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Comentarios</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>    
 
         <div class="w-25">
         <button onclick="enviarFormulario()" type="button" class="btn btn-primary">Enviar</button>
