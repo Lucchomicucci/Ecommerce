@@ -11,7 +11,7 @@
   background-color: whitesmoke;
 }
 
-.mt-4, .my-4 {
+.mt-4, .my-4{
     margin-top: 3rem!important;
 }
 
@@ -35,6 +35,11 @@ h1.my-4{
   font-weight: bold;
 }
 
+.categoriasproductos{
+  position: fixed;
+  width: 13% !important;
+}
+
 /* -------------------------------------------------------------- */
 
 /* Contacto */
@@ -43,3 +48,17 @@ div.formulario{
   margin-top: 3rem;
 }
 
+/* --------------- Carrito ------------------ */
+
+.primerelemento{
+  margin-top: 5%;
+}
+
+.modal-backdrop{
+  position: relative!important;
+}
+
+.card{
+  word-wrap: normal ;
+  display: inline-block;
+}

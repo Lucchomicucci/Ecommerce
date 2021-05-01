@@ -1,6 +1,6 @@
 let acumulador = ``;
 let totalCarrito = 0;
-let carrito=[];
+let productosEnCarrito=[];
 
 const usuarioEnLocal = localStorage.usuario;
 if(usuarioEnLocal == null){
@@ -22,15 +22,53 @@ class producto{
       this.imagen = imagen;
       this.stock = stock;
     }   
-    
+
     restarStock(cantidad){
       this.stock -= cantidad;
     }
+
+    pusheoDeItemsAlCarrito(){
+      let acumuladorCarrito;
+      if(productosEnCarrito.length > 0){
+        for (let k = 0; k < productosEnCarrito.length; k++){
+
+        acumuladorCarrito+= 
+       `<div class="card" style="width: 10rem;">
+          <img src="${productosEnCarrito[k].imagen}" class="card-img-top" alt="">
+            <div class="card-body">
+              <h5 class="card-title">${productosEnCarrito[k].nombre}</h5>
+              <p class="card-text">$${productosEnCarrito[k].precio}</p>
+              <a href="#" class="btn btn-primary">Eliminar producto</a>
+            </div>
+        </div>
+        `
+        }
+
+      }else{
+        `<div><p>No tenes productos seleccionados</p></div>`
+      }
+
+      if(document.getElementById("carritototal")){
+        document.getElementById("carritototal").innerHTML = acumuladorCarrito;
+      }
+    }
+
     agregarAlCarrito(){
       if(this.stock > 0){
         totalCarrito = totalCarrito + this.precio;
+
         this.restarStock(1);
-        console.log(`El total de tu carrito es de: $${totalCarrito}`);
+        productosEnCarrito.push(this);
+        this.pusheoDeItemsAlCarrito();
+
+        document.getElementById("iconocarrito").innerHTML =
+        `<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <ion-icon name="cart-outline"></ion-icon>  Carrito<span class="badge badge-light">${productosEnCarrito.length}</span>
+        </button>`
+
+        document.getElementById("preciototalcarrito").innerHTML = 
+          `<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Comprar por $${totalCarrito}</button>`;
       }
       else{
         alert("No tenemos stock.");
@@ -79,75 +117,28 @@ if(document.getElementById("productos")){
 document.getElementById("productos").innerHTML = acumulador;
 }
 
+// -------------- Carrito ----------------- //
 
+// let acumuladorCarrito;
 
-// Pertenece a Rutinas // 
+// if(productosEnCarrito){
+//   for (let k = 0; k < productosEnCarrito.length; k++){
 
-class rutinas{
-  constructor(nombre, precio, imagen){
-      this.nombre = nombre;
-      this.precio = precio;
-      this.imagen = imagen;
-  }
+//   acumuladorCarrito+= `<div class="card" style="width: 18rem;">
+//   <img src="${productosEnCarrito[k].imagen}" class="card-img-top" alt="...">
+//   <div class="card-body">
+//     <h5 class="card-title">${productosEnCarrito[k].nombre}</h5>
+//     <p class="card-text">$${productosEnCarrito[k].precio}</p>
+//     <a href="#" class="btn btn-primary">Eliminar producto</a>
+//   </div>
+//   </div>
+//   `
+//   }
 
-  agregarAlCarrito(){
-        totalCarrito = totalCarrito + this.precio;
-        console.log(`El total de tu carrito es de: $${totalCarrito}`);
-  }
-}
-
-const rutina1 = new rutinas("Full Body", 1500, "/imagenes/img.jpg");
-const rutina2 = new rutinas("Cardio", 1000, "/imagenes/img.jpg");
-const rutina3 = new rutinas("Espalda y pecho", 1500, "/imagenes/img.jpg");
-const rutina4 = new rutinas("Piernas", 1500, "/imagenes/img.jpg");
-
-let arrayRutina = [];
-arrayRutina.push(rutina1);
-arrayRutina.push(rutina2);
-arrayRutina.push(rutina3);
-arrayRutina.push(rutina4);
-
-let acumuladorRutina = ``;
-
-for(let j = 0; j < arrayRutina.length; j++) {
-
-acumuladorRutina+= `<div class="col-lg-3 col-md-6 mb-4">
-<div class="card h-100">
-<img class="card-img-top" src="http://placehold.it/500x325" alt="">
-<div class="card-body">
-<h4 class="card-title">${arrayRutina[j].nombre}</h4>
-<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-<h5> $${arrayRutina[j].precio}</h5>
-</div>
-<div class="card-footer">
-<button class="btn btn-primary" onclick="arrayRutina[${j}].agregarAlCarrito()">Comprar</button>
-</div>
-</div>
-</div>`
-
-}
-
-if(document.getElementById("rutinas")){
-  document.getElementById("rutinas").innerHTML = acumuladorRutina;
-}
-
-
-
-// let carritoStorage = localStorage.carrito
-// let carrito = [];
-
-// if(carritoStorage == null){
-//   carrito = [];
 // }else{
-//   console.log(carritoStorage)
-//   console.log(JSON.parse(carritoStorage))
-//   carrito = JSON.parse(carritoStorage)
+//   `No tenes productos seleccionados`
 // }
 
-// let productoEnTipoJson = [productos];
-// agregarAlCarrito(productoEnTipoJson); 
-// function agregarAlCarrito(producto){
-//   carrito.push(producto); 
-//   localStorage.carrito = JSON.stringify(carrito); // Array de carrito
-//   localStorage.validacionCarrito = 'until=10/10/2222'; // Array de carrito
+// if(document.getElementById("carritototal")){
+//   document.getElementById("carritototal").innerHTML = acumuladorCarrito;
 // }

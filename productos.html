@@ -45,9 +45,42 @@
           <li class="nav-item">
             <a class="nav-link" href="contacto.html">Contacto</a>
           </li>
+          <li id="iconocarrito">
+            <!-- Boton para el carrito -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              <ion-icon name="cart-outline"></ion-icon>  Carrito
+            </button>
+            <!-- <a class="btn btn-secondary" href="carrito.html" role="button"><ion-icon name="cart-outline"></ion-icon>  Carrito</a> -->
+          </li>
         </ul>
       </div>
     </div>
+
+
+
+<!-- Carrito popup -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Productos seleccionados</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="carritototal">
+        <!-- <div id="carritoTotal">
+
+        </div> -->
+        
+      </div>
+        <div class="modal-footer" id="preciototalcarrito">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
     
   </nav>
@@ -56,23 +89,25 @@
   <div class="container">
 
     <div class="row">
+      <div class="col-lg-3 align-self-start"> 
+        <div class="categoriasproductos">
+          <h1 class="my-4">Categorias</h1>
+          <div class="list-group">
+            <a href="#" class="list-group-item categorias">Musculosas</a>
+            <a href="#" class="list-group-item categorias">Remeras</a>
+            <a href="#" class="list-group-item categorias">Buzos</a>
+            <a href="#" class="list-group-item categorias">Camperas</a>
+            <a href="#" class="list-group-item categorias">Shorts</a>
+            <a href="#" class="list-group-item categorias">Pantalones</a>
+            <a href="#" class="list-group-item categorias">Gorras</a>
+            <a href="#" class="list-group-item categorias">Accesorios</a>
+          </div>
 
-      <div class="col-lg-3"> <!-- TO DO: Ver como dejarlo fixed para cuando scrolee acompañe-->
-        <h1 class="my-4">Categorias</h1>
-        <div class="list-group">
-          <a href="#" class="list-group-item categorias">Musculosas</a>
-          <a href="#" class="list-group-item categorias">Remeras</a>
-          <a href="#" class="list-group-item categorias">Buzos</a>
-          <a href="#" class="list-group-item categorias">Camperas</a>
-          <a href="#" class="list-group-item categorias">Shorts</a>
-          <a href="#" class="list-group-item categorias">Pantalones</a>
-          <a href="#" class="list-group-item categorias">Gorras</a>
-          <a href="#" class="list-group-item categorias">Accesorios</a>
+
         </div>
-
-      </div>
       <!-- /.col-lg-3 -->
-
+      </div>
+      
       <div class="col-lg-9">
 
         <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
@@ -130,6 +165,7 @@
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 
 
 
