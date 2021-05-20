@@ -1,6 +1,3 @@
-let acumulador = ``;
-let totalCarrito = 0;
-let productosEnCarrito=[];
 
 const usuarioEnLocal = localStorage.usuario;
 if(usuarioEnLocal == null){
@@ -12,133 +9,27 @@ if(usuarioEnLocal == null){
 }
 
 
+let acumulador = ``;
 
+for (let i = 0; i < productos.length; i++) {
 
-// Pertenece a productos //
-class producto{
-    constructor(nombre, precio, imagen, stock) {
-      this.nombre = nombre;
-      this.precio = precio;
-      this.imagen = imagen;
-      this.stock = stock;
-    }   
-
-    restarStock(cantidad){
-      this.stock -= cantidad;
-    }
-
-    pusheoDeItemsAlCarrito(){
-      let acumuladorCarrito;
-      if(productosEnCarrito.length > 0){
-        for (let k = 0; k < productosEnCarrito.length; k++){
-
-        acumuladorCarrito+= 
-       `<div class="card" style="width: 10rem;">
-          <img src="${productosEnCarrito[k].imagen}" class="card-img-top" alt="">
-            <div class="card-body">
-              <h5 class="card-title">${productosEnCarrito[k].nombre}</h5>
-              <p class="card-text">$${productosEnCarrito[k].precio}</p>
-              <a href="#" class="btn btn-primary">Eliminar producto</a>
-            </div>
-        </div>
-        `
-        }
-
-      }else{
-        `<div><p>No tenes productos seleccionados</p></div>`
-      }
-
-      if(document.getElementById("carritototal")){
-        document.getElementById("carritototal").innerHTML = acumuladorCarrito;
-      }
-    }
-
-    agregarAlCarrito(){
-      if(this.stock > 0){
-        totalCarrito = totalCarrito + this.precio;
-
-        this.restarStock(1);
-        productosEnCarrito.push(this);
-        this.pusheoDeItemsAlCarrito();
-
-        document.getElementById("iconocarrito").innerHTML =
-        `<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        <ion-icon name="cart-outline"></ion-icon>  Carrito<span class="badge badge-light">${productosEnCarrito.length}</span>
-        </button>`
-
-        document.getElementById("preciototalcarrito").innerHTML = 
-          `<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Comprar por $${totalCarrito}</button>`;
-      }
-      else{
-        alert("No tenemos stock.");
-      }
-    }
-}
-
-const producto1 = new producto("Pain & Pride", 800, "/imagenes/REMERA3.jpg", 20);
-const producto2 = new producto("BelieveFitness", 1200, "/imagenes/remera2.jpg", 2);
-const producto3 = new producto("SuperHeroes", 900, "/imagenes/remera4.jpg", 15);
-const producto4 = new producto("Believe", 800, "/imagenes/remera1.jpg", 10);
-const producto5 = new producto("BasicaNegra", 650, "/imagenes/remera5.jpg", 5);
-
-let productos = [];
-productos.push(producto1); // .push para meter lo que esta entre () en el array declarado arriba "let productos"
-productos.push(producto2);
-productos.push(producto3);
-productos.push(producto4);
-productos.push(producto5);
-
-
- for (let i = 0; i < productos.length; i++) {
-
-
-
-  acumulador += `<div class="col-lg-4 col-md-6 mb-4">
+  acumulador += `<div class="col-lg-4 col-md-6 mb-4" id="producto${[i]}">
     <div class="card h-100">
-    <a href="#"><img class="card-img-top" src="${productos[i].imagen}" alt=""></a>
+    <img class="card-img-top" src="${productos[i].imagen}" alt="">
     <div class="card-body">
     <h4 class="card-title">
-    <a href="#">${productos[i].nombre}</a>
+    ${productos[i].nombre}
     </h4>
     <h5> $${productos[i].precio}</h5>
-    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
     </div>
     <div class="card-footer">
     <button class="btn btn-primary" onclick="productos[${i}].agregarAlCarrito()">Agregar al carrito</button>
     <p>Stock disponible ${productos[i].stock}</p>
-    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
     </div>
     </div>
     </div>`
 }
 
-if(document.getElementById("productos")){
-document.getElementById("productos").innerHTML = acumulador;
+if($("productos").html){
+$("#productos").html(acumulador)
 }
-
-// -------------- Carrito ----------------- //
-
-// let acumuladorCarrito;
-
-// if(productosEnCarrito){
-//   for (let k = 0; k < productosEnCarrito.length; k++){
-
-//   acumuladorCarrito+= `<div class="card" style="width: 18rem;">
-//   <img src="${productosEnCarrito[k].imagen}" class="card-img-top" alt="...">
-//   <div class="card-body">
-//     <h5 class="card-title">${productosEnCarrito[k].nombre}</h5>
-//     <p class="card-text">$${productosEnCarrito[k].precio}</p>
-//     <a href="#" class="btn btn-primary">Eliminar producto</a>
-//   </div>
-//   </div>
-//   `
-//   }
-
-// }else{
-//   `No tenes productos seleccionados`
-// }
-
-// if(document.getElementById("carritototal")){
-//   document.getElementById("carritototal").innerHTML = acumuladorCarrito;
-// }

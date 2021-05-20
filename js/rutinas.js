@@ -10,10 +10,10 @@ class rutinas{
 
   }
   
-  const rutina1 = new rutinas("Full Body", 1500, "/imagenes/img.jpg");
-  const rutina2 = new rutinas("Cardio", 1000, "/imagenes/img.jpg");
-  const rutina3 = new rutinas("Espalda y pecho", 1500, "/imagenes/img.jpg");
-  const rutina4 = new rutinas("Piernas", 1500, "/imagenes/img.jpg");
+  const rutina1 = new rutinas("Full Body", 1500, "imagenes/img.jpg");
+  const rutina2 = new rutinas("Cardio", 1000, "imagenes/img.jpg");
+  const rutina3 = new rutinas("Espalda y pecho", 1500, "imagenes/img.jpg");
+  const rutina4 = new rutinas("Piernas", 1500, "imagenes/img.jpg");
   
   let arrayRutina = [];
   arrayRutina.push(rutina1);

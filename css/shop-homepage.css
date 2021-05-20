@@ -1,18 +1,31 @@
-/*!
- * Start Bootstrap - Shop Homepage (https://startbootstrap.com/template/shop-homepage)
- * Copyright 2013-2020 Start Bootstrap
- * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-shop-homepage/blob/master/LICENSE)
- */
+/* NAVVAR */
+
+.bg-primary{
+  background-color: rgba(0, 0, 0, 0.9)!important;
+}
 
 /* Categorias y body  */
 
  body {
   padding-top: 56px;
   background-color: whitesmoke;
+  background-image: url("../imagenes/fondoazul.jpg");
 }
+
+.btn-primary{
+  background-color: #0d3e6e;
+  border-color: #0d3e6e;
+}
+
+.btn-primary:hover{
+  background-color: #3b4147;
+  border-color: #3b4147;
+}
+
 
 .mt-4, .my-4{
     margin-top: 3rem!important;
+    color: white;
 }
 
 .categorias{
@@ -22,12 +35,13 @@
 }
 
 a.list-group-item.categorias{
-  background-color: #007bff;
+  background-color: #0d3e6e;
   text-decoration: none;
 }
 
 a.list-group-item.categorias:hover{
-  background-color: lightblue;
+  background-color: black;
+  color: white;
 }
 
 h1.my-4{
@@ -40,9 +54,16 @@ h1.my-4{
   width: 13% !important;
 }
 
-/* -------------------------------------------------------------- */
+.card{
+  background-color: rgb(48 53 73);
+  color: white;
+}
 
-/* Contacto */
+.py-5{
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* --------------- Contacto ------------------ */
 
 div.formulario{
   margin-top: 3rem;
@@ -61,4 +82,21 @@ div.formulario{
 .card{
   word-wrap: normal ;
   display: inline-block;
+}
+
+#exampleModal{
+  background-color: #000000b0;
+}
+
+.h5, h5{
+  font-size: 0.90rem;
+}
+
+.modal-body{
+  padding: 0rem;
+}
+
+.modal-content .card{
+  background-color: white;
+  color: black;
 }
