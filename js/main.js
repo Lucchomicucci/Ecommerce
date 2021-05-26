@@ -2,9 +2,15 @@ let totalCarrito = 0;
 let productosEnCarrito=[];
 let acumuladorCarrito = ``;
 let productosEnLocal;
+let productosEnLocalJSON =[];
 
 
-let productosEnLocalJSON = JSON.parse(localStorage.ProductosCarrito);
+if (localStorage.ProductosCarrito) {
+  productosEnLocalJSON = JSON.parse(localStorage.ProductosCarrito);
+  productosEnCarrito = productosEnLocalJSON;
+} else {
+  console.log("no tenemos valores");
+}
 
 
 if(productosEnLocalJSON !== null){
@@ -66,7 +72,7 @@ class producto{
         totalCarrito = totalCarrito + this.precio;
 
         productosEnCarrito.push(this);
-        productosEnLocal = localStorage.setItem('ProductosCarrito', JSON.stringify(productosEnCarrito));
+        localStorage.setItem('ProductosCarrito', JSON.stringify(productosEnCarrito));
         this.pusheoDeItemsAlCarrito();
         
         
