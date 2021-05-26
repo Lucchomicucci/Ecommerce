@@ -94,7 +94,7 @@ function vaciarCarrito(){
   productosEnCarrito = [];
   acumuladorCarrito = ``;
   totalCarrito = 0;
-  localStorage.setItem('ProductosCarrito', null)
+  localStorage.setItem('ProductosCarrito', '')
 
   if(document.getElementById("carritototal")){
     document.getElementById("carritototal").innerHTML = `<div class="d-flex p-2 bd-highlight justify-content-center"><p class="text-muted">Carrito vacio</p></div>`;
