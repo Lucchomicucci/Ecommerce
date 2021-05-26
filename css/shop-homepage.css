@@ -12,12 +12,16 @@
   background-image: url("../imagenes/fondoazul.jpg");
 }
 
+.btn:focus{
+  box-shadow: none;
+}
+
 .btn-primary{
   background-color: #0d3e6e;
   border-color: #0d3e6e;
 }
 
-.btn-primary:hover{
+.btn-primary:hover, .btn-primary:focus{
   background-color: #3b4147;
   border-color: #3b4147;
 }

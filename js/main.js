@@ -1,20 +1,39 @@
-
-// const usuarioEnLocal = localStorage.usuario;
-// if(usuarioEnLocal == null){
-//   const usuario = prompt("Ingrese su nombre:");
-//   localStorage.usuario = usuario;
-//   alert(`Bienvenido ${usuario}`);
-// }else{
-//   alert(`Bienvenido ${usuarioEnLocal}`);
-// }
-
-
-
-
-
 let totalCarrito = 0;
 let productosEnCarrito=[];
 let acumuladorCarrito = ``;
+let productosEnLocal;
+
+
+let productosEnLocalJSON = JSON.parse(localStorage.ProductosCarrito);
+
+
+if(productosEnLocalJSON !== null){
+  for (let j = 0; j < productosEnLocalJSON.length; j++){
+          
+    acumuladorCarrito+= 
+    `<div class="card" style="width: 10rem;">
+    <img src="${productosEnLocalJSON[j].imagen}" class="card-img-top" alt="">
+    <div class="card-body">
+    <h5 class="card-title">${productosEnLocalJSON[j].nombre}</h5>
+    <p class="card-text">$${productosEnLocalJSON[j].precio}</p>
+    </div>
+    </div>
+    `
+    totalCarrito += productosEnLocalJSON[j].precio;
+
+    document.getElementById("carritototal").innerHTML = acumuladorCarrito;
+
+        document.getElementById("preciototalcarrito").innerHTML = 
+        `<button type"button" class="btn btn-secondary" onclick="vaciarCarrito()">Vaciar carrito</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Comprar por $${totalCarrito}</button>`;
+
+        document.getElementById("iconocarrito").innerHTML =
+        `<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <ion-icon name="cart-outline"></ion-icon>  Carrito<span class="badge badge-light">${productosEnLocalJSON.length}</span>
+        </button>`
+  }
+}
 
 class producto{
     constructor(nombre, precio, imagen, stock) {
@@ -47,7 +66,9 @@ class producto{
         totalCarrito = totalCarrito + this.precio;
 
         productosEnCarrito.push(this);
+        productosEnLocal = localStorage.setItem('ProductosCarrito', JSON.stringify(productosEnCarrito));
         this.pusheoDeItemsAlCarrito();
+        
         
         document.getElementById("iconocarrito").innerHTML =
         `<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -59,11 +80,16 @@ class producto{
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-primary">Comprar por $${totalCarrito}</button>`;
     }
+
 }
+
+
 function vaciarCarrito(){
   productosEnCarrito = [];
   acumuladorCarrito = ``;
   totalCarrito = 0;
+  localStorage.setItem('ProductosCarrito', null)
+
   if(document.getElementById("carritototal")){
     document.getElementById("carritototal").innerHTML = `<div class="d-flex p-2 bd-highlight justify-content-center"><p class="text-muted">Carrito vacio</p></div>`;
   }
@@ -127,3 +153,36 @@ for (let i = 0; i < productos.length; i++) {
 if($("productos").html){
 $("#productos").html(acumulador)
 }
+
+
+
+// async function generarLinkDePago() {
+//   const productsToMP = carrito.map((element) => {
+//     let nuevoElemento = {
+//       title: element.title,
+//       description: "",
+//       picture_url: "",
+//       category_id: element.id,
+//       quantity: Number(element.cantidad),
+//       currency_id: "ARS",
+//       unit_price: Number(element.precio),
+//     };
+//     return nuevoElemento;
+//   });
+//   console.log(productsToMP);
+//   const response = await fetch(
+//     "https://api.mercadopago.com/checkout/preferences",
+//     {
+//       method: "POST",
+//       headers: {
+//         Authorization:
+//           "Bearer ACA VA TU TOKEN",
+//       },
+//       body: JSON.stringify({
+//         items: productsToMP,
+//       }),
+//     }
+//   );
+//   const data = await response.json();
+//   window.open(data.init_point, "_blank");
+// }
