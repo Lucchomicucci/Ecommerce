@@ -42,10 +42,11 @@ if(productosEnLocalJSON !== null){
 }
 
 class producto{
-    constructor(nombre, precio, imagen, stock) {
+    constructor(nombre, precio, imagen, id) {
       this.nombre = nombre;
       this.precio = precio;
       this.imagen = imagen;
+      this.id = id;
     }   
 
     pusheoDeItemsAlCarrito(){
@@ -84,7 +85,7 @@ class producto{
         document.getElementById("preciototalcarrito").innerHTML = 
         `<button type"button" class="btn btn-secondary" onclick="vaciarCarrito()">Vaciar carrito</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Comprar por $${totalCarrito}</button>`;
+        <button type="button" class="btn btn-primary" onclick="generarPago()">Comprar por $${totalCarrito}</button>`;
     }
 
 }
@@ -109,18 +110,18 @@ function vaciarCarrito(){
   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>`;
 }
   
-const producto1 = new producto("Pain & Pride", 800, "imagenes/REMERA3BIS.png");
-const producto2 = new producto("Believe Fitness", 1200, "imagenes/remera2.png");
-const producto3 = new producto("SuperHeroes", 900, "imagenes/remera4.png");
-const producto4 = new producto("Believe", 800, "imagenes/remera1.png");
-const producto5 = new producto("Basica Negra", 650, "imagenes/remera5.png");
-const producto6 = new producto("Basica Azul", 500, "imagenes/remera6.png");
-const producto7 = new producto("Musculosa Negra", 750, "imagenes/musculosanegra.png");
-const producto8 = new producto("Musculosa Bulls", 1350, "imagenes/musculosabulls.png");
-const producto9 = new producto("Musculosa Adidas", 1299, "imagenes/musculosaadidas.png");
-const producto10 = new producto("Buzo Canguro", 1000, "imagenes/BuzoNegro.png");
-const producto11 = new producto("Buzo sin manga", 800, "imagenes/Buzosinmanga.png");
-const producto12 = new producto("Buzo blanco", 1200, "imagenes/BuzoblancoBIS.png");
+const producto1 = new producto("Pain & Pride", 800, "imagenes/REMERA3BIS.png", 1);
+const producto2 = new producto("Believe Fitness", 1200, "imagenes/remera2.png", 2);
+const producto3 = new producto("SuperHeroes", 900, "imagenes/remera4.png", 3);
+const producto4 = new producto("Believe", 800, "imagenes/remera1.png", 4);
+const producto5 = new producto("Basica Negra", 650, "imagenes/remera5.png", 5);
+const producto6 = new producto("Basica Azul", 500, "imagenes/remera6.png", 6);
+const producto7 = new producto("Musculosa Negra", 750, "imagenes/musculosanegra.png", 7);
+const producto8 = new producto("Musculosa Bulls", 1350, "imagenes/musculosabulls.png", 8);
+const producto9 = new producto("Musculosa Adidas", 1299, "imagenes/musculosaadidas.png", 9);
+const producto10 = new producto("Buzo Canguro", 1000, "imagenes/BuzoNegro.png", 10);
+const producto11 = new producto("Buzo sin manga", 800, "imagenes/Buzosinmanga.png", 11);
+const producto12 = new producto("Buzo blanco", 1200, "imagenes/BuzoblancoBIS.png", 12);
 
 let productos = [];
 productos.push(producto1);
@@ -160,35 +161,37 @@ if($("productos").html){
 $("#productos").html(acumulador)
 }
 
+// TEST-58cd5ace-3ea6-4804-8379-1459360ca926
+// TOKEN // TEST-6992980073036512-052822-cd1947737690a5402efbe03fa429effa-12792425
 
+// TEST-4218227222193191-051723-7c6373cf3d48251c0d9200c2a947653a-232878277
 
-// async function generarLinkDePago() {
-//   const productsToMP = carrito.map((element) => {
-//     let nuevoElemento = {
-//       title: element.title,
-//       description: "",
-//       picture_url: "",
-//       category_id: element.id,
-//       quantity: Number(element.cantidad),
-//       currency_id: "ARS",
-//       unit_price: Number(element.precio),
-//     };
-//     return nuevoElemento;
-//   });
-//   console.log(productsToMP);
-//   const response = await fetch(
-//     "https://api.mercadopago.com/checkout/preferences",
-//     {
-//       method: "POST",
-//       headers: {
-//         Authorization:
-//           "Bearer ACA VA TU TOKEN",
-//       },
-//       body: JSON.stringify({
-//         items: productsToMP,
-//       }),
-//     }
-//   );
-//   const data = await response.json();
-//   window.open(data.init_point, "_blank");
-// }
+async function generarPago() {
+  const productosAMP = productosEnCarrito.map((element) => {
+    let nuevoElemento = {
+      title: element.nombre,
+      description: "",
+      picture_url: "",
+      category_id: element.id,
+      quantity: 1,
+      currency_id: "ARS",
+      unit_price: Number(element.precio),
+    };
+    return nuevoElemento;
+  });
+  console.log(productosAMP);
+  const response = await fetch(
+    "https://api.mercadopago.com/checkout/preferences",
+    {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer TEST-6992980073036512-052822-cd1947737690a5402efbe03fa429effa-12792425",
+      },
+      body: JSON.stringify({
+        items: productosAMP,
+      }),
+    }
+  );
+  const data = await response.json();
+  window.open(data.init_point, "_blank");
+}
