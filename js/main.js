@@ -27,6 +27,8 @@ if ($("productos").html) {
   $("#productos").html(acumulador)
 }
 
+// ---------------- Chequeo de localStorage -------------------- //
+
 if (localStorage.ProductosCarrito) {
   productosEnLocalJSON = JSON.parse(localStorage.ProductosCarrito);
   productosEnCarrito = productosEnLocalJSON;
@@ -60,6 +62,7 @@ if (productosEnLocalJSON !== null) {
   }
 }
 
+// --------------- Incorporacion de MercadoPago ---------------- //
 
 // TEST-58cd5ace-3ea6-4804-8379-1459360ca926
 // TOKEN // TEST-6992980073036512-052822-cd1947737690a5402efbe03fa429effa-12792425
