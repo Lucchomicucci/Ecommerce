@@ -4,7 +4,7 @@ let acumuladorCarrito = ``;
 let productosEnLocal;
 let productosEnLocalJSON = [];
 
-// Generacion de cards segun cantidad de productos
+// Generacion de cards segun cantidad de productos //
 
 let acumulador = ``;
 for (let i = 0; i < productos.length; i++) {
@@ -51,7 +51,7 @@ if (productosEnLocalJSON !== null) {
     document.getElementById("preciototalcarrito").innerHTML =
       `<button type"button" class="btn btn-secondary" onclick="vaciarCarrito()">Vaciar carrito</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Comprar por $${totalCarrito}</button>`;
+        <button type="button" class="btn btn-primary" onclick="generarPago()">Comprar por $${totalCarrito}</button>`;
 
     document.getElementById("iconocarrito").innerHTML =
       `<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -63,8 +63,6 @@ if (productosEnLocalJSON !== null) {
 
 // TEST-58cd5ace-3ea6-4804-8379-1459360ca926
 // TOKEN // TEST-6992980073036512-052822-cd1947737690a5402efbe03fa429effa-12792425
-
-// TEST-4218227222193191-051723-7c6373cf3d48251c0d9200c2a947653a-232878277
 
 async function generarPago() {
   const productosAMP = productosEnCarrito.map((element) => {
